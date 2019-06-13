@@ -1,10 +1,11 @@
-import React, { Component, PropTypes, cloneElement } from 'react';
+import React, { Component,  cloneElement } from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 class TabPane extends Component {
   static propTypes = {
-    tab: PropTypes.oneOfType([
-      PropTypes.string,
+    tab: PropTypes.oneOfType([ //一个对象可以是几种类型中的任意一种类型
+      PropTypes.string, //PropTypes进行类型检查
       PropTypes.node,
     ]).isRequired,
     order: PropTypes.string.isRequired,

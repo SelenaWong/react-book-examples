@@ -1,9 +1,9 @@
-import React, { Component, PropTypes, cloneElement } from 'react';
+import React, { Component, cloneElement } from 'react';
 import classnames from 'classnames';
-
+import PropTypes from 'prop-types';
 class TabContent extends Component {
   static propTypes = {
-    classPrefix: React.PropTypes.string,
+    classPrefix: PropTypes.string,
     panels: PropTypes.node,
     activeIndex: PropTypes.number,
   };
