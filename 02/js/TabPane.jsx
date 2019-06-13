@@ -1,8 +1,9 @@
-import React, { Component, PropTypes, cloneElement } from 'react';
+import React, { Component,  cloneElement } from 'react';
 import classnames from 'classnames';
 import { immutableRenderDecorator } from 'react-immutable-render-mixin';
 import CSSModules from 'react-css-modules';
 import styles from '../css/style.scss';
+import PropTypes from 'prop-types';
 
 @immutableRenderDecorator
 @CSSModules(styles, { allowMultiple: true })
@@ -28,7 +29,7 @@ class TabPane extends Component {
     return (
       <div
         role="tabpanel"
-        styleName={classes}
+        className={classes}
         aria-hidden={!isActive}>
         {children}
       </div>

@@ -1,4 +1,4 @@
-import React, { Component, PropTypes, cloneElement } from 'react';
+import React, { Component,cloneElement } from 'react';
 import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 import { immutableRenderDecorator } from 'react-immutable-render-mixin';
@@ -6,6 +6,7 @@ import CSSModules from 'react-css-modules';
 import { Motion, spring } from 'react-motion';
 import styles from '../css/style.scss';
 import InkBar from './InkBar';
+import PropTypes from 'prop-types';
 
 function getOuterWidth(el) {
   return el.offsetWidth;
@@ -94,7 +95,7 @@ class TabNav extends Component {
           aria-disabled={child.props.disabled ? 'true' : 'false'}
           aria-selected={activeIndex === order? 'true' : 'false'}
           {...events}
-          styleName={classes}
+          className={classes}
           key={order}
           {...ref}
         >
@@ -116,11 +117,11 @@ class TabNav extends Component {
     });
 
     return (
-      <div styleName={rootClasses} role="tablist">
+      <div className={rootClasses} role="tablist">
         <Motion style={{ left: spring(this.state.inkBarLeft) }}>
           {({ left }) => <InkBar width={this.state.inkBarWidth} left={left} />}
         </Motion>
-        <ul styleName={classes}>
+        <ul className={classes}>
           {this.getTabs()}
         </ul>
       </div>

@@ -1,7 +1,8 @@
-import React, { Component, PropTypes, cloneElement } from 'react';
+import React, { Component, cloneElement } from 'react';
 import { immutableRenderDecorator } from 'react-immutable-render-mixin';
 import CSSModules from 'react-css-modules';
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
 import styles from '../css/style.scss';
 
 @immutableRenderDecorator
@@ -15,7 +16,7 @@ class InkBar extends Component {
     });
 
     return (
-      <div styleName={classes} style={{
+      <div className={classes} style={{
         WebkitTransform: `translate3d(${left}px, 0, 0)`,
         transform: `translate3d(${left}px, 0, 0)`,
         width: width,

@@ -1,4 +1,4 @@
-import React, { Component, PropTypes, cloneElement } from 'react';
+import React, { Component, cloneElement } from 'react';
 import classnames from 'classnames';
 import TabNav from './TabNav';
 import TabContent from './TabContent';
@@ -6,6 +6,11 @@ import { immutableRenderDecorator } from 'react-immutable-render-mixin';
 import CSSModules from 'react-css-modules';
 import styles from '../css/style.scss';
 import { Seq } from 'immutable';
+import PropTypes from 'prop-types';
+
+/***
+ * 使用react-css-modules之后，引入了style后，设置节点样式class时，统一使用className而不是styleName
+ */
 
 @immutableRenderDecorator
 @CSSModules(styles, { allowMultiple: true })
@@ -56,14 +61,17 @@ class Tabs extends Component {
   handleTabClick(activeIndex) {
     const prevIndex = this.state.activeIndex;
 
-    if (this.state.activeIndex !== activeIndex &&
-        'defaultActiveIndex' in this.props) {
+    /* if(this.state.activeIndex !== activeIndex &&
+      'defaultActiveIndex' in this.props)
+    */
+    if (this.state.activeIndex !== activeIndex ) {
       this.setState({
         activeIndex,
         prevIndex,
       });
 
-      this.props.onChange({ activeIndex, prevIndex });
+      this.props.onChangeTab(activeIndex)
+      // this.props.onChange({ activeIndex, prevIndex });
     }
   }
 

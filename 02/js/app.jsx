@@ -1,4 +1,5 @@
-import React, { Component, PropTypes, cloneElement } from 'react';
+import React, { Component, cloneElement } from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import Tabs from './Tabs';
 import TabPane from './TabPane';
@@ -8,6 +9,7 @@ class App extends Component {
     super(props);
 
     this.handleChange = this.handleChange.bind(this);
+    this.onChangeTab = this.onChangeTab.bind(this);
 
     this.state = {
       activeIndex: 0,
@@ -18,6 +20,12 @@ class App extends Component {
     this.setState({
       activeIndex: parseInt(e.target.value, 10),
     });
+  }
+
+  onChangeTab(index){
+    this.setState({
+      activeIndex: index
+    })
   }
 
   render() {
@@ -33,7 +41,7 @@ class App extends Component {
             <option value="2">Tab 3</option>
           </select>
         </div>
-        <Tabs defaultActiveIndex={this.state.activeIndex} className="tabs-bar">
+        <Tabs activeIndex={this.state.activeIndex} className="tabs-bar" onChangeTab={this.onChangeTab}>
           <TabPane order="0" tab={'Tab 1'}>第一个 Tab 里的内容</TabPane>
           <TabPane order="1" tab={'Tab 2'}>第二个 Tab 里的内容</TabPane>
           <TabPane order="2" tab={'Tab 3'}>第三个 Tab 里的内容</TabPane>
